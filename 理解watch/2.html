@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+     <input type="text" v-model="obj.name">
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                obj:{
+                    name:'zs',
+                    age:20 
+                }
+            },
+            watch:{
+                'obj.name':function(){
+                    console.log('监听对象中某属性的变化')
+                },
+                'obj':{
+                    handler:function(){
+                        console.log('监听整个对象的变化')
+                    },
+                    deep:true,//可以深度监听
+                    immediate:true //当值第一次绑定的时候并不会触发watch监听，使用immediate则可以在最初绑定的时候 执行
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

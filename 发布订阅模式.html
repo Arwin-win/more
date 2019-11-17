@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name){
+            this.name = name 
+        }
+
+        Person.prototype.update = function(){
+            console.log('通知' + this.name + '更新了新的文章')
+        }
+        
+        var xm = new Person('小明')
+        var ls = new Person('李四')
+        var zs = new Person('张三')
+
+        var wxgzh = {
+            subs:[],//收集所有的订阅者
+            addSub(sub){
+                this.subs.push(sub)
+            },
+            notify(){
+                this.subs.forEach(item=>item.update())
+            }
+        }
+
+        wxgzh.addSub(xm)
+        wxgzh.addSub(ls)
+        wxgzh.notify()
+    </script>
+</body>
+</html>
